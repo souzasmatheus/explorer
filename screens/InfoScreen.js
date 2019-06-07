@@ -7,11 +7,10 @@ import {
   ImageBackground,
   StatusBar,
   SafeAreaView,
-  TextInput,
+  ScrollView,
   TouchableHighlight
 } from 'react-native';
 import { Header } from 'react-navigation';
-import axios from 'axios';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -30,13 +29,13 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   infoCard: {
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     borderTopRightRadius: 36,
     borderTopLeftRadius: 36,
     backgroundColor: 'white',
     marginTop: -36,
     paddingHorizontal: 36,
-    paddingVertical: 72
+    paddingVertical: 36
   },
   infoText: {
     fontSize: 18,
@@ -79,22 +78,24 @@ export default class HomeScreen extends React.Component {
           source={{
             uri: backgroundImage
           }}
-          style={[styles.container, { width, height: height / 2 }]}
+          style={[styles.container, { width, height: height * 0.66 }]}
         >
           <SafeAreaView>
             <StatusBar barStyle="light-content" />
           </SafeAreaView>
         </ImageBackground>
-        <View style={[styles.flex, styles.infoCard]}>
-          <Text style={[styles.infoText]}>
-            Title: <Text style={[styles.nasaText]}>{title}</Text>
-          </Text>
-          <Text style={[styles.infoText]}>
-            description: <Text style={[styles.nasaText]}>{description}</Text>
-          </Text>
-          <Text style={[styles.infoText]}>
-            creator: <Text style={[styles.nasaText]}>{creator}</Text>
-          </Text>
+        <View style={[styles.infoCard, { height: height * 0.37 }]}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Text style={[styles.infoText]}>
+              Title: <Text style={[styles.nasaText]}>{title}</Text>
+            </Text>
+            <Text style={[styles.infoText]}>
+              description: <Text style={[styles.nasaText]}>{description}</Text>
+            </Text>
+            <Text style={[styles.infoText]}>
+              creator: <Text style={[styles.nasaText]}>{creator}</Text>
+            </Text>
+          </ScrollView>
         </View>
       </View>
     );
