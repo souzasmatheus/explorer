@@ -9,9 +9,6 @@ export default createAppContainer(
     {
       HomeScreen,
       InfoScreen
-    },
-    {
-      initialRouteName: 'InfoScreen'
     }
   )
 );

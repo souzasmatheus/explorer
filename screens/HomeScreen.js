@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
 
 export default class HomeScreen extends React.Component {
   state = {
-    keyWord: '',
-    };
+    keyWord: ''
+  };
 
   searchOnNASA() {
     axios
@@ -54,6 +54,10 @@ export default class HomeScreen extends React.Component {
       )
       .then(res => {
         console.log(res.data.collection.items[0]);
+        this.props.navigation.navigate('InfoScreen', {
+          nasaInfo: res.data.collection.items[0],
+          searchedTerm: this.state.keyWord
+        });
       })
       .catch(err => console.log('erro: ' + err));
   }
@@ -62,7 +66,8 @@ export default class HomeScreen extends React.Component {
     return (
       <ImageBackground
         source={{
-          uri: 'https://images-assets.nasa.gov/image/PIA07906/PIA07906~thumb.jpg'
+          uri:
+            'https://images-assets.nasa.gov/image/PIA07906/PIA07906~thumb.jpg'
         }}
         style={[styles.container, { width, height }]}
       >
