@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  View,
   StyleSheet,
   Text,
   Dimensions,
@@ -41,9 +42,21 @@ const styles = StyleSheet.create({
 });
 
 export default class HomeScreen extends React.Component {
-  state = {
-    keyWord: '',
-    };
+  static navigationOptions = {
+    header: (
+      <ImageBackground
+        source={{
+          uri:
+            'https://images-assets.nasa.gov/image/PIA07906/PIA07906~thumb.jpg'
+        }}
+        style={[styles.container, { width, height: height / 2 }]}
+      >
+        <SafeAreaView>
+          <StatusBar barStyle="light-content" />
+        </SafeAreaView>
+      </ImageBackground>
+    )
+  };
 
   searchOnNASA() {
     axios
@@ -60,34 +73,9 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground
-        source={{
-          uri: 'https://images-assets.nasa.gov/image/PIA07906/PIA07906~thumb.jpg'
-        }}
-        style={[styles.container, { width, height }]}
-      >
-        <SafeAreaView>
-          <StatusBar barStyle="light-content" backgroundColor="black" />
-        </SafeAreaView>
-
-        <TextInput
-          style={styles.input}
-          onChangeText={text => this.setState({ keyWord: text })}
-        />
-
-        <TouchableHighlight
-          onPress={() => this.searchOnNASA()}
-          style={styles.button}
-        >
-          <Text style={{ color: 'white', fontSize: 18, fontWeight: '500' }}>
-            Explore!
-          </Text>
-        </TouchableHighlight>
-      </ImageBackground>
+      <View style={styles.container}>
+        <Text>Teste</Text>
+      </View>
     );
   }
 }
-
-HomeScreen.navigationOptions = {
-  header: null
-};
