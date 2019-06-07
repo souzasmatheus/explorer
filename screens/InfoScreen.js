@@ -35,13 +35,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: -36,
     paddingHorizontal: 36,
-    paddingVertical: 36
+    paddingTop: 36
   },
   infoText: {
     fontSize: 18,
     color: '#a3a3a3',
     fontWeight: '500',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    marginBottom: 8
   },
   nasaText: {
     color: 'black',
@@ -59,12 +60,13 @@ export default class HomeScreen extends React.Component {
     headerStyle: {
       backgroundColor: 'transparent',
       borderBottomWidth: 0
-    }
+    },
+    headerTintColor: '#fff'
   });
 
   render() {
-    const backgroundImage = this.props.navigation.getParam('nasaInfo').links[0]
-      .href;
+    const nasaId = this.props.navigation.getParam('nasaInfo').data[0]['nasa_id']
+    const backgroundImage = `https://images-assets.nasa.gov/image/${nasaId}/${nasaId}~medium.jpg`
     const title = this.props.navigation.getParam('nasaInfo').data[0].title;
     const description = this.props.navigation.getParam('nasaInfo').data[0][
       'description_508'
