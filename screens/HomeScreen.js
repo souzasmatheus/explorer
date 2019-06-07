@@ -5,10 +5,29 @@ import {
   Dimensions,
   ImageBackground,
   StatusBar,
-  SafeAreaView
+  SafeAreaView,
+  TextInput
 } from 'react-native';
 
 const { width, height } = Dimensions.get('screen');
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  input: {
+    height: 48,
+    width: width - 72,
+    borderRadius: 5,
+    backgroundColor: 'white',
+    borderColor: 'grey',
+    borderWidth: 1.5,
+    textAlign: 'center',
+    fontSize: 24
+  }
+});
 
 export default function HomeScreen() {
   return (
@@ -19,12 +38,11 @@ export default function HomeScreen() {
       style={[styles.container, { width, height }]}
     >
       <SafeAreaView>
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor="black"
-        />
+        <StatusBar barStyle="light-content" backgroundColor="black" />
       </SafeAreaView>
-      <Text style={{ color: 'white' }}>Hello World</Text>
+      <TextInput
+        style={styles.input}
+      />
     </ImageBackground>
   );
 }
@@ -32,11 +50,3 @@ export default function HomeScreen() {
 HomeScreen.navigationOptions = {
   header: null
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
