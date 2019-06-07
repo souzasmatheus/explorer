@@ -6,7 +6,8 @@ import {
   ImageBackground,
   StatusBar,
   SafeAreaView,
-  TextInput
+  TextInput,
+  TouchableHighlight
 } from 'react-native';
 
 const { width, height } = Dimensions.get('screen');
@@ -26,6 +27,15 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     textAlign: 'center',
     fontSize: 24
+  },
+  button: {
+    width: width / 3,
+    height: 40,
+    backgroundColor: '#5d97dd',
+    marginTop: 12,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 
@@ -40,9 +50,15 @@ export default function HomeScreen() {
       <SafeAreaView>
         <StatusBar barStyle="light-content" backgroundColor="black" />
       </SafeAreaView>
-      <TextInput
-        style={styles.input}
-      />
+
+      <TextInput style={styles.input} />
+
+      <TouchableHighlight
+        onPress={() => alert('funcionou!')}
+        style={styles.button}
+      >
+        <Text style={{ color: 'white', fontSize: 18, fontWeight: '500' }}>Explore!</Text>
+      </TouchableHighlight>
     </ImageBackground>
   );
 }
